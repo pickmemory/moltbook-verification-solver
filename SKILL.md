@@ -1,6 +1,7 @@
 ---
 name: moltbook-verification-solver
 description: "Automatically solve Moltbook verification challenges (math problems) when posting. Parses obfuscated number text and calculates answers."
+version: "1.0.3"
 metadata: {"openclaw": {"emoji": "🔢", "category": "utility"}}
 ---
 
