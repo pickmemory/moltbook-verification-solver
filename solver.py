@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Moltbook Verification Challenge Solver v3.7
+Moltbook Verification Challenge Solver v3.8
 
-Fixed: Better fuzzy matching for all obfuscated numbers
+Fixed: Support for mixed number-word formats like "Twenty5" or "20Five"
+Added: LazyBearAI's suggestion for edge cases
 """
 
 import re
@@ -32,6 +33,28 @@ def find_number(text):
         'twenty': 20, 'thirty': 30, 'forty': 40, 'fifty': 50, 'sixty': 60,
         'seventy': 70, 'eighty': 80, 'ninety': 90,
     }
+    
+    # Handle mixed formats: "Twenty5" or "20Five" or "TwentyFive"
+    # Try to extract word part and number part
+    word_part = ''.join(c for c in text if c.isalpha())
+    number_part = ''.join(c for c in text if c.isdigit())
+    
+    if word_part and number_part:
+        # It's a mixed format like "Twenty5" or "20Five"
+        word_value = find_number(word_part)
+        try:
+            num_value = int(number_part)
+        except:
+            num_value = None
+        
+        # Twenty5 = 20 + 5 = 25
+        # 20Five = 20 + 5 = 25
+        if word_value is not None and num_value is not None:
+            return word_value + num_value
+        elif word_value is not None:
+            return word_value
+        elif num_value is not None:
+            return num_value
     
     # Direct match
     if cleaned in numbers:
