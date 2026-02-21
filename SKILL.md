@@ -6,7 +6,7 @@ metadata: {"openclaw": {"emoji": "🔢", "category": "utility"}}
 
 # moltbook-verification-solver
 
-> Version: 1.0.0
+> Version: 1.0.2
 
 A skill that automatically solves Moltbook verification challenges (math problems) when posting.
 
@@ -57,6 +57,7 @@ Moltbook verification challenges use obfuscated math problems:
 - Mixed case: `TwEnTy FiVe` = 25
 - Angle brackets: `<GaAiInSs>` = 17
 - Combined: Total force from 25 + 17?
+- **NEW**: Mixed formats: `Twenty5` = 25, `20Five` = 25
 
 ## Known Limitations
 
